@@ -1,0 +1,371 @@
+openapi: 3.0.3
+info:
+  title: Dumka
+  description: ''
+  version: 1.0.0
+servers:
+  -
+    url: 'https://dumka-backend.herokuapp.com'
+paths:
+  '/api/v1/proposals/{proposal}/vote':
+    post:
+      summary: 'Vote for a proposal'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'Bearer {YOUR_AUTH_KEY}'
+          schema:
+            type: string
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - Proposals
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                type:
+                  type: string
+                  description: 'Must be one of <code>upvote</code> or <code>downvote</code>.'
+                  example: upvote
+              required:
+                - type
+    parameters:
+      -
+        in: path
+        name: proposal
+        description: ''
+        example: 15
+        required: true
+        schema:
+          type: integer
+  '/api/v1/schools/{school}/proposals':
+    get:
+      summary: 'Get a list of proposals'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'Bearer {YOUR_AUTH_KEY}'
+          schema:
+            type: string
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+      tags:
+        - Proposals
+    post:
+      summary: 'Add a new proposal'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'Bearer {YOUR_AUTH_KEY}'
+          schema:
+            type: string
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - Proposals
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                title:
+                  type: string
+                  description: ''
+                  example: voluptatem
+                body:
+                  type: string
+                  description: ''
+                  example: explicabo
+              required:
+                - title
+                - body
+    parameters:
+      -
+        in: path
+        name: school
+        description: ''
+        example: 12
+        required: true
+        schema:
+          type: integer
+  /api/v1/schools:
+    get:
+      summary: 'Get a list of schools'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  data:
+                    -
+                      id: 1
+                      name: 'Alverta Hickle'
+                    -
+                      id: 2
+                      name: 'Jane Romaguera'
+                    -
+                      id: 3
+                      name: 'Jeffery Deckow'
+                    -
+                      id: 4
+                      name: 'Camryn Fay MD'
+                    -
+                      id: 5
+                      name: 'Jeremy Reichert DDS'
+                    -
+                      id: 6
+                      name: 'Miss Rhoda Mann Sr.'
+                    -
+                      id: 7
+                      name: 'Sheldon Becker'
+                    -
+                      id: 8
+                      name: 'Camden Fadel'
+                    -
+                      id: 9
+                      name: 'Gerda Denesik'
+                    -
+                      id: 10
+                      name: 'Rhett Schuster DDS'
+                properties:
+                  data:
+                    type: array
+                    example:
+                      -
+                        id: 1
+                        name: 'Alverta Hickle'
+                      -
+                        id: 2
+                        name: 'Jane Romaguera'
+                      -
+                        id: 3
+                        name: 'Jeffery Deckow'
+                      -
+                        id: 4
+                        name: 'Camryn Fay MD'
+                      -
+                        id: 5
+                        name: 'Jeremy Reichert DDS'
+                      -
+                        id: 6
+                        name: 'Miss Rhoda Mann Sr.'
+                      -
+                        id: 7
+                        name: 'Sheldon Becker'
+                      -
+                        id: 8
+                        name: 'Camden Fadel'
+                      -
+                        id: 9
+                        name: 'Gerda Denesik'
+                      -
+                        id: 10
+                        name: 'Rhett Schuster DDS'
+                    items:
+                      type: object
+      tags:
+        - Schools
+      security: []
+  '/api/v1/schools/{school}/users/auth':
+    post:
+      summary: Authentication
+      description: 'Makes a new verification code. Will register the account if it doesn''t already exist'
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - Users
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: ''
+                  example: accusamus
+                slug:
+                  type: string
+                  description: ''
+                  example: sed
+              required:
+                - slug
+      security: []
+    parameters:
+      -
+        in: path
+        name: school
+        description: ''
+        example: 12
+        required: true
+        schema:
+          type: integer
+  '/api/v1/schools/{school}/users/verify':
+    post:
+      summary: Verification
+      description: 'Get user token by passing one-time verification code.'
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - Users
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                verification_code:
+                  type: string
+                  description: ''
+                  example: aut
+                slug:
+                  type: string
+                  description: ''
+                  example: perspiciatis
+              required:
+                - verification_code
+                - slug
+      security: []
+    parameters:
+      -
+        in: path
+        name: school
+        description: ''
+        example: 11
+        required: true
+        schema:
+          type: integer
+tags:
+  -
+    name: Proposals
+    description: ''
+  -
+    name: Schools
+    description: ''
+  -
+    name: Users
+    description: ''
+components:
+  securitySchemes:
+    default:
+      type: http
+      scheme: bearer
+      description: ''
+security:
+  -
+    default: []

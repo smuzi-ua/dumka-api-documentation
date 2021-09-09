@@ -1,0 +1,297 @@
+{
+    "variable": [
+        {
+            "id": "baseUrl",
+            "key": "baseUrl",
+            "type": "string",
+            "name": "string",
+            "value": "dumka-backend.herokuapp.com"
+        }
+    ],
+    "info": {
+        "name": "Dumka",
+        "_postman_id": "d20ab316-b0a5-423a-8b5a-72bf79aedb2c",
+        "description": "",
+        "schema": "https:\/\/schema.getpostman.com\/json\/collection\/v2.1.0\/collection.json"
+    },
+    "item": [
+        {
+            "name": "Proposals",
+            "description": "",
+            "item": [
+                {
+                    "name": "Vote for a proposal",
+                    "request": {
+                        "url": {
+                            "protocol": "https",
+                            "host": "{{baseUrl}}",
+                            "path": "api\/v1\/proposals\/:proposal\/vote",
+                            "query": [],
+                            "raw": "https:\/\/{{baseUrl}}\/api\/v1\/proposals\/:proposal\/vote",
+                            "variable": [
+                                {
+                                    "id": "proposal",
+                                    "key": "proposal",
+                                    "value": "15",
+                                    "description": ""
+                                }
+                            ]
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"type\":\"upvote\"}"
+                        },
+                        "description": ""
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Get a list of proposals",
+                    "request": {
+                        "url": {
+                            "protocol": "https",
+                            "host": "{{baseUrl}}",
+                            "path": "api\/v1\/schools\/:school\/proposals",
+                            "query": [],
+                            "raw": "https:\/\/{{baseUrl}}\/api\/v1\/schools\/:school\/proposals",
+                            "variable": [
+                                {
+                                    "id": "school",
+                                    "key": "school",
+                                    "value": "12",
+                                    "description": ""
+                                }
+                            ]
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": ""
+                    },
+                    "response": [
+                        {
+                            "header": [
+                                {
+                                    "key": "cache-control",
+                                    "value": "no-cache, private"
+                                },
+                                {
+                                    "key": "content-type",
+                                    "value": "application\/json"
+                                },
+                                {
+                                    "key": "access-control-allow-origin",
+                                    "value": "*"
+                                }
+                            ],
+                            "code": 401,
+                            "body": "{\"message\":\"Unauthenticated.\"}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Add a new proposal",
+                    "request": {
+                        "url": {
+                            "protocol": "https",
+                            "host": "{{baseUrl}}",
+                            "path": "api\/v1\/schools\/:school\/proposals",
+                            "query": [],
+                            "raw": "https:\/\/{{baseUrl}}\/api\/v1\/schools\/:school\/proposals",
+                            "variable": [
+                                {
+                                    "id": "school",
+                                    "key": "school",
+                                    "value": "5",
+                                    "description": ""
+                                }
+                            ]
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"title\":\"voluptatem\",\"body\":\"explicabo\"}"
+                        },
+                        "description": ""
+                    },
+                    "response": []
+                }
+            ]
+        },
+        {
+            "name": "Schools",
+            "description": "",
+            "item": [
+                {
+                    "name": "Get a list of schools",
+                    "request": {
+                        "url": {
+                            "protocol": "https",
+                            "host": "{{baseUrl}}",
+                            "path": "api\/v1\/schools",
+                            "query": [],
+                            "raw": "https:\/\/{{baseUrl}}\/api\/v1\/schools"
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [
+                                {
+                                    "key": "cache-control",
+                                    "value": "no-cache, private"
+                                },
+                                {
+                                    "key": "content-type",
+                                    "value": "application\/json"
+                                },
+                                {
+                                    "key": "access-control-allow-origin",
+                                    "value": "*"
+                                }
+                            ],
+                            "code": 200,
+                            "body": "{\"data\":[{\"id\":1,\"name\":\"Alverta Hickle\"},{\"id\":2,\"name\":\"Jane Romaguera\"},{\"id\":3,\"name\":\"Jeffery Deckow\"},{\"id\":4,\"name\":\"Camryn Fay MD\"},{\"id\":5,\"name\":\"Jeremy Reichert DDS\"},{\"id\":6,\"name\":\"Miss Rhoda Mann Sr.\"},{\"id\":7,\"name\":\"Sheldon Becker\"},{\"id\":8,\"name\":\"Camden Fadel\"},{\"id\":9,\"name\":\"Gerda Denesik\"},{\"id\":10,\"name\":\"Rhett Schuster DDS\"}]}",
+                            "name": ""
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "Users",
+            "description": "",
+            "item": [
+                {
+                    "name": "Authentication",
+                    "request": {
+                        "url": {
+                            "protocol": "https",
+                            "host": "{{baseUrl}}",
+                            "path": "api\/v1\/schools\/:school\/users\/auth",
+                            "query": [],
+                            "raw": "https:\/\/{{baseUrl}}\/api\/v1\/schools\/:school\/users\/auth",
+                            "variable": [
+                                {
+                                    "id": "school",
+                                    "key": "school",
+                                    "value": "12",
+                                    "description": ""
+                                }
+                            ]
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"name\":\"accusamus\",\"slug\":\"sed\"}"
+                        },
+                        "description": "Makes a new verification code. Will register the account if it doesn't already exist",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Verification",
+                    "request": {
+                        "url": {
+                            "protocol": "https",
+                            "host": "{{baseUrl}}",
+                            "path": "api\/v1\/schools\/:school\/users\/verify",
+                            "query": [],
+                            "raw": "https:\/\/{{baseUrl}}\/api\/v1\/schools\/:school\/users\/verify",
+                            "variable": [
+                                {
+                                    "id": "school",
+                                    "key": "school",
+                                    "value": "11",
+                                    "description": ""
+                                }
+                            ]
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"verification_code\":\"aut\",\"slug\":\"perspiciatis\"}"
+                        },
+                        "description": "Get user token by passing one-time verification code.",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": []
+                }
+            ]
+        }
+    ],
+    "auth": {
+        "type": "bearer"
+    }
+}
